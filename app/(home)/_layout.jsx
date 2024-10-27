@@ -6,6 +6,9 @@ import { View, Image } from "react-native";
 
 const Layout = () => {
     const { mode, setMode } = useStore();
+    const dark_logo = require("../../assets/images/facebook-dark.png");
+    const light_logo = require("../../assets/images/facebook-light.png");
+
     return (<>
         <Stack screenOptions={{ headerShadowVisible: false }}>
             <Stack.Screen
@@ -16,13 +19,11 @@ const Layout = () => {
                     },
                     headerLeft: () => (
                         <Image
-                            source={{
-                                uri: "https://cdn-icons-png.flaticon.com/512/16183/16183576.png",
-                            }}
+                            source={`${mode === 'dark' ? dark_logo : light_logo}`}
                             style={{
-                                width: 180,
+                                width: 200,
                                 height: 90,
-                                borderRadius: 20,
+
                             }}
                         />
                     ),
@@ -31,7 +32,7 @@ const Layout = () => {
                 }}
             />
         </Stack>
-        <StatusBar backgroundColor={mode === "dark" ? "green" : "white"} style={mode === "dark" ? "light" : "dark"} /></>
+        <StatusBar backgroundColor={mode === "dark" ? "#3b5998" : "white"} style={mode === "dark" ? "light" : "dark"} /></>
     );
 };
 
